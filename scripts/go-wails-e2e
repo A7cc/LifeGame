@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Wails dev adds "-gcflags all=-N -l" to every dependency. Compiling the
+# modernc SQLite package that way requires substantially more memory than a
+# normal build, while browser E2E tests do not need debugger-friendly code.
+filtered=()
+skip_next=false
+for argument in "$@"; do
+  if $skip_next; then
+    skip_next=false
+    continue
+  fi
+  if [[ "$argument" == "-gcflags" ]]; then
+    skip_next=true
+    continue
+  fi
+  filtered+=("$argument")
+done
+
+exec go "${filtered[@]}"

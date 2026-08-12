@@ -1,0 +1,480 @@
+/**
+ * ============================================================
+ * LifeGame 人生模拟器 - 统一样式变量提取文件
+ * ============================================================
+ *
+ * 本文件提取了项目中所有界面组件的共同样式特征，
+ * 用于后续统一修改界面样式时参考。
+ *
+ * 创建日期: 2024
+ * 最后更新: 2024
+ * ============================================================
+ */
+
+/* ============================================================
+   第一部分：CSS 变量定义
+   ============================================================ */
+
+:root {
+	color-scheme: light;
+
+  /* --------------------------------------------------------
+     1.1 主色调系列
+     -------------------------------------------------------- */
+	--primary-color: #2563eb;
+	--primary-hover-color: #1d4ed8;
+	--primary-color-rgb: 37, 99, 235;
+	--accent-color: #fff7e6;
+	--accent-strong-color: #b45309;
+	--background-color: #f1f5f9;
+	--on-primary-color: #fff;
+
+  /* --------------------------------------------------------
+     1.2 面板相关颜色
+     -------------------------------------------------------- */
+	--panel-main-color: #fff;
+	--panel-color: #f8fafc;
+	--panel-shadow: rgb(15 23 42 / 10%);
+	--panel-sub-color: #eef2f7;
+	--panel-log-color: #f1f5f9;
+
+  /* --------------------------------------------------------
+     1.3 文字颜色
+     -------------------------------------------------------- */
+	--font-color: #1f2937;
+	--font-secondary: #596579;
+	--font-light: #667085;
+	--font-white: #fff;
+	--font-purple: #7e22ce;
+
+  /* --------------------------------------------------------
+     1.4 状态颜色
+     -------------------------------------------------------- */
+	--success-color: #2e7d32;
+	--success-color-rgb: 46, 125, 50;
+	--success-secondary-color: #dcfce7;
+	--warning-color: #9a5800;
+	--warning-secondary-color: #fff2cc;
+	--error-color: #c62828;
+	--error-color-rgb: 198, 40, 40;
+	--error-secondary-color: #fee2e2;
+	--info-color: #1d4ed8;
+	--info-secondary-color: #dbeafe;
+
+  /* --------------------------------------------------------
+     1.5 渐变色定义
+     -------------------------------------------------------- */
+	--gradient-primary: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+	--gradient-light: linear-gradient(135deg, #eff6ff 0%, #fff7e6 100%);
+  /* --------------------------------------------------------
+     1.6 边框颜色
+     -------------------------------------------------------- */
+	--border-color: #d6dee8;
+  /* --------------------------------------------------------
+     1.7 产品名字颜色 - 暗黑主题
+     -------------------------------------------------------- */
+	--product-name-color: #eef4ff;
+	--product-name-border-color: #c6d7f5;
+  /* --------------------------------------------------------
+     1.8 选择样式
+     -------------------------------------------------------- */
+	--select-color: #e8f0fe;
+	--select-border-color: #93b4ed;
+
+	/* Element Plus 与游戏主题共用同一套语义色。 */
+	--el-color-primary: #2563eb;
+	--el-color-primary-rgb: 37, 99, 235;
+	--el-color-primary-dark-2: #1e40af;
+	--el-color-primary-light-3: #6790f2;
+	--el-color-primary-light-5: #92b1f6;
+	--el-color-primary-light-7: #bed1fa;
+	--el-color-primary-light-8: #d3e0fc;
+	--el-color-primary-light-9: #e9effe;
+	--el-bg-color: #fff;
+	--el-bg-color-page: #f1f5f9;
+	--el-bg-color-overlay: #fff;
+	--el-fill-color-light: #f1f5f9;
+	--el-fill-color-lighter: #f8fafc;
+	--el-border-color: #d6dee8;
+	--el-border-color-light: #e0e7ef;
+	--el-border-color-lighter: #e8edf3;
+	--el-text-color-primary: #1f2937;
+	--el-text-color-regular: #445064;
+	--el-text-color-secondary: #596579;
+	--el-text-color-placeholder: #667085;
+}
+
+/* ============================================================
+   暗黑主题变量覆盖
+   ============================================================ */
+[data-theme="dark"] {
+	color-scheme: dark;
+  /* --------------------------------------------------------
+     1.1 主色调系列 - 暗黑主题
+     -------------------------------------------------------- */
+	--primary-color: #70a7ff;
+	--primary-hover-color: #93bdff;
+	--primary-color-rgb: 112, 167, 255;
+	--accent-color: #332815;
+	--accent-strong-color: #fbbf24;
+	--background-color: #0b1220;
+	--on-primary-color: #fff;
+
+  /* --------------------------------------------------------
+     1.2 面板相关颜色 - 暗黑主题
+     -------------------------------------------------------- */
+	--panel-main-color: #111b2e;
+	--panel-color: #152238;
+	--panel-shadow: rgb(0 0 0 / 36%);
+	--panel-sub-color: #1e2d45;
+	--panel-log-color: #17253b;
+
+  /* --------------------------------------------------------
+     1.3 文字颜色 - 暗黑主题
+     -------------------------------------------------------- */
+	--font-color: #f1f5f9;
+	--font-secondary: #b8c4d6;
+	--font-light: #a3b0c2;
+	--font-white: #fff;
+	--font-purple: #d8b4fe;
+
+  /* --------------------------------------------------------
+     1.4 状态颜色 - 暗黑主题
+     -------------------------------------------------------- */
+	--success-color: #75d381;
+	--success-color-rgb: 117, 211, 129;
+	--success-secondary-color: #24432e;
+	--warning-color: #fbbf24;
+	--warning-secondary-color: #4a3b1d;
+	--error-color: #ff8585;
+	--error-color-rgb: 255, 133, 133;
+	--error-secondary-color: #4a292f;
+	--info-color: #7db7ff;
+	--info-secondary-color: #243d5c;
+
+  /* --------------------------------------------------------
+     1.5 渐变色定义 - 暗黑主题
+     -------------------------------------------------------- */
+	--gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+	--gradient-light: linear-gradient(135deg, #14233c 0%, #332815 100%);
+  /* --------------------------------------------------------
+     1.6 边框颜色 - 暗黑主题
+     -------------------------------------------------------- */
+	--border-color: #33445e;
+  /* --------------------------------------------------------
+     1.7 产品名字颜色 - 暗黑主题
+     -------------------------------------------------------- */
+	--product-name-color: rgb(59 130 246 / 18%);
+	--product-name-border-color: rgb(112 167 255 / 38%);
+  /* --------------------------------------------------------
+     1.8 选择样式
+     -------------------------------------------------------- */
+	--select-color: rgb(59 130 246 / 22%);
+	--select-border-color: rgb(112 167 255 / 55%);
+
+	--el-color-primary: #2563eb;
+	--el-color-primary-rgb: 37, 99, 235;
+	--el-color-primary-dark-2: #1e40af;
+	--el-color-primary-light-3: #638bf0;
+	--el-color-primary-light-5: #385a9a;
+	--el-color-primary-light-7: #273f6b;
+	--el-color-primary-light-8: #203456;
+	--el-color-primary-light-9: #192942;
+	--el-bg-color: #152238;
+	--el-bg-color-page: #0b1220;
+	--el-bg-color-overlay: #1a2941;
+	--el-fill-color-light: #1e2d45;
+	--el-fill-color-lighter: #19283f;
+	--el-border-color: #33445e;
+	--el-border-color-light: #3c4f6b;
+	--el-border-color-lighter: #2c3d57;
+	--el-text-color-primary: #f1f5f9;
+	--el-text-color-regular: #d4dce8;
+	--el-text-color-secondary: #b8c4d6;
+	--el-text-color-placeholder: #a3b0c2;
+}
+
+/* ============================================================
+   主题过渡动画
+   ============================================================ */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* ============================================================
+   暗黑主题全局样式覆盖
+   ============================================================ */
+[data-theme="dark"] .section-title {
+  color: var(--font-color) !important;
+}
+/* 暗黑主题日志动作颜色调整 */
+[data-theme="dark"] .log-action.green {
+  background: rgba(102, 187, 106, 0.2);
+  color: #81c784;
+}
+[data-theme="dark"] .log-action.yellow {
+  background: rgba(255, 183, 77, 0.2);
+  color: #ffb74d;
+}
+[data-theme="dark"] .log-action.red {
+  background: rgba(239, 83, 80, 0.2);
+  color: #ef5350;
+}
+[data-theme="dark"] .log-action.blue {
+  background: rgba(66, 165, 245, 0.2);
+  color: #64b5f6;
+}
+[data-theme="dark"] .log-action.gray {
+  background: rgba(255, 255, 255, 0.1);
+  color: #b0b0b0;
+}
+[data-theme="dark"] .log-action.purple {
+  background: rgba(156, 39, 176, 0.2);
+  color: #ba68c8;
+}
+[data-theme="dark"] .log-action.cyan {
+  background: rgba(0, 188, 212, 0.2);
+  color: #4dd0e1;
+}
+[data-theme="dark"] .log-action.orange {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffa726;
+}
+[data-theme="dark"] .log-action.pink {
+  background: rgba(233, 30, 99, 0.2);
+  color: #f48fb1;
+}
+
+/* 暗黑主题面板边框调整 */
+[data-theme="dark"] .log-panel {
+	border-color: var(--border-color);
+}
+[data-theme="dark"] .panel-header {
+	border-bottom-color: var(--border-color);
+}
+
+/* ==================== 右侧主体面板设置 ==================== */
+.product-panel {
+	box-shadow: 0 4px 14px var(--panel-shadow);
+  border: 1px solid var(--border-color);                  /* 边框为灰色 */
+	border-radius: 8px;
+  padding: 16px;                              /* 内边距 */
+  background: var(--panel-main-color);             /* 使用自定义变量的背景色 */
+  display: flex;                              /* 嵌套 Flex */
+  flex-direction: column;                     /* 垂直排列 */
+  overflow: hidden;                           /* 隐藏溢出内容 */
+  flex: 1;                                    /* 占用空间 */
+}
+
+/* ==================== 面板顶部区域 ==================== */
+/* 面板顶部区域 */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	border-bottom: 1px solid var(--border-color);
+	padding-bottom: 8px;
+}
+
+/* 顶部标题 */
+.panel-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--font-color);
+}
+
+/* 顶部操作按钮 */
+.panel-controls {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+/* ==================== 右侧面板区域 ==================== */
+.panel-main-right {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* ==================== 左侧面板通用子面板 ==================== */
+/* 通用子面板头部 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; /* 添加底部边距 */
+}
+
+/* 通用子面板标题 */
+.section-title {
+  font-size: 13px; /* 字体大小 */
+  font-weight: 600; /* 字体粗细 */
+	color: var(--font-color);
+}
+
+/* 通用子面板操作按钮 */
+.section-controls {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+/* 通用子面板主体内容 */
+.section-content {
+  flex: 1;
+  overflow-y: auto;  /* 添加垂直滚动条 */
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-right: 4px;
+  /* 隐藏滚动条 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* 隐藏滚动条，有些浏览器不能使用，需要配合 */
+.section-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* 通用子面板为空时 */
+.section-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+	color: var(--font-secondary);
+  height: 100%;
+}
+
+/* 通用子面板为空时的图标 */
+.section-empty-icon {
+  font-size: 40px;
+  opacity: 0.6;
+}
+
+/* 通用子面板为空时的文本 */
+.section-empty-text {
+  font-size: 12px;
+}
+
+/* ==================== 日志区域 ==================== */
+/* 日志记录面板 */
+.log-panel {
+  flex-shrink: 0;
+  background: var(--panel-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 12px; /* 添加内边距 */
+  display: flex;  /* 使子元素水平排列 */
+  flex-direction: column; /* 子元素垂直排列 */
+  overflow: hidden; /* 隐藏溢出内容 */
+}
+
+/* 日志记录面板的日志列表 */
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* 日志记录面板的日志列表项 */
+.log-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  background: var(--panel-sub-color);
+  border-left: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+/* 日志记录面板的日志列表项 - 图标 */
+.log-item-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* 日志记录面板的日志列表项 - 时间 */
+.log-time {
+  min-width: 30px;
+  font-size: 10px;
+	color: var(--font-secondary);
+  flex-shrink: 0;
+}
+
+/* 日志记录面板的日志列表项 - 动作 */
+.log-action {
+  font-weight: 600;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 5px;
+	background: var(--panel-sub-color);
+	color: var(--font-secondary);
+  flex-shrink: 0;
+}
+
+/* 日志记录面板的日志列表项 - 动作 - 颜色 */
+/* 成功（绿色） */
+.log-action.green {
+  background: #d1fae5;
+  color: #67c23a;
+}
+/* 警告（黄色） */
+.log-action.yellow {
+  background: #fef3c7;
+  color: #e6a23c;
+}
+/* 错误（红色） */
+.log-action.red {
+  background: #fee2e2;
+  color: #f56c6c;
+}
+/* 信息（蓝色） */
+.log-action.blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+/* 次要信息（灰色） */
+.log-action.gray {
+  background: #f3f4f6;
+  color: #374151;
+}
+/* 紫色（用于特殊状态 / 权限 / VIP） */
+.log-action.purple {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+/* 青色（处理中 / loading / 流程中） */
+.log-action.cyan {
+  background: #cffafe;
+  color: #155e75;
+}
+/* 橙色（强调 / 次级警告） */
+.log-action.orange {
+  background: #ffedd5;
+  color: #9a3412;
+}
+/* 粉色（特殊标记 / 标签） */
+.log-action.pink {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+
+/* 日志记录面板的日志列表项 - 文本 */
+.log-item-text {
+  flex: 1;
+  color: var(--font-light);
+  line-height: 1.3;
+  word-break: break-all;
+}
+
+/* 日志项布局覆盖 - 适配多行内容 */
+.log-panel .log-item {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
