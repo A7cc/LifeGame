@@ -28,6 +28,15 @@ sudo apt-get install libgtk-3-dev libwebkit2gtk-4.1-dev
 
 ## 快速开始
 
+安装与项目版本一致的 Wails CLI：
+
+```bash
+go install github.com/wailsapp/wails/v2/cmd/wails@v2.10.2
+export PATH="$PATH:$(go env GOPATH)/bin"
+wails version
+wails doctor
+```
+
 安装前端依赖：
 
 ```bash
@@ -39,28 +48,123 @@ cd ..
 启动开发模式：
 
 ```bash
-go run github.com/wailsapp/wails/v2/cmd/wails@v2.10.2 dev -tags webkit2_41
+wails dev
 ```
 
-构建 Linux 可执行程序：
+Linux 使用 WebKitGTK 4.1 时启动命令为：
 
 ```bash
-go run github.com/wailsapp/wails/v2/cmd/wails@v2.10.2 build -tags webkit2_41
+wails dev -tags webkit2_41
 ```
 
-产物默认位于：
-
-```text
-build/bin/LifeGame
-```
-
-如果本次没有修改 Go 对外方法、参数或响应结构，可以使用更快的重复构建：
+如果不想全局安装 Wails，也可以把下文的 `wails` 替换为固定版本命令：
 
 ```bash
-go run github.com/wailsapp/wails/v2/cmd/wails@v2.10.2 build -tags webkit2_41 -skipbindings
+go run github.com/wailsapp/wails/v2/cmd/wails@v2.10.2
 ```
 
-修改过 `services.App` 的公开方法或响应类型时，至少运行一次不带 `-skipbindings` 的 `dev` 或 `build`，更新 `frontend/wailsjs/` 绑定。
+例如 `wails build` 等价于：
+
+```bash
+go run github.com/wailsapp/wails/v2/cmd/wails@v2.10.2 build
+```
+
+## 编译与跨平台发布
+
+所有命令都应在包含 `wails.json` 的项目根目录执行，默认产物位于 `build/bin/`。
+
+### 当前系统
+
+macOS 或 Windows：
+
+```bash
+wails build
+```
+
+Linux（本项目使用 WebKitGTK 4.1）：
+
+```bash
+wails build -tags webkit2_41
+```
+
+### 在 macOS 编译 Windows
+
+Windows x64，适用于大多数 Windows 10/11 电脑：
+
+```bash
+wails build -platform windows/amd64 -o LifeGame-windows-amd64.exe
+```
+
+Windows ARM64：
+
+```bash
+wails build -platform windows/arm64 -o LifeGame-windows-arm64.exe
+```
+
+也可以一次生成两个架构；Wails 会自动给两个文件添加架构后缀：
+
+```bash
+wails build -platform windows/amd64,windows/arm64
+```
+
+生成 Windows NSIS 安装包前，先在 Mac 安装 NSIS：
+
+```bash
+brew install nsis
+wails build -platform windows/amd64 -webview2 embed -nsis
+```
+
+`-webview2 embed` 会嵌入 WebView2 引导安装程序，发布包会略微增大，但目标电脑缺少 WebView2 时安装更方便。交叉编译完成后，仍应在对应架构的真实 Windows 环境中进行启动和功能测试。
+
+### macOS 不同架构
+
+Apple Silicon（M1/M2/M3/M4）：
+
+```bash
+wails build -platform darwin/arm64
+```
+
+Intel Mac：
+
+```bash
+wails build -platform darwin/amd64
+```
+
+同时支持 Apple Silicon 和 Intel 的 Universal 应用：
+
+```bash
+wails build -platform darwin/universal
+```
+
+对外分发 macOS 应用时还需要使用 Apple Developer 证书签名并公证。
+
+### Linux 不同架构
+
+Wails v2 的 Linux 桌面程序依赖 GTK、WebKitGTK 和 CGO，不能从 macOS 直接交叉编译。请在对应 Linux 机器、虚拟机或 CI runner 上执行：
+
+```bash
+# Linux x64
+wails build -platform linux/amd64 -tags webkit2_41
+
+# Linux ARM64
+wails build -platform linux/arm64 -tags webkit2_41
+```
+
+### `-skipbindings` 的含义
+
+`-skipbindings` 会跳过重新生成 Go 与前端 JavaScript 之间的绑定文件，即 `frontend/wailsjs/`。只修改 Vue、CSS、图片、音乐、游戏数值或 Go 方法内部实现，且没有改变前端可调用接口时，可以用于缩短重复构建时间：
+
+```bash
+wails build -platform windows/amd64 -skipbindings
+```
+
+新增、删除或修改 `services.App` 的公开方法、方法参数、返回值、响应结构或 Wails `Bind` 列表后，必须至少运行一次不带 `-skipbindings` 的 `dev` 或 `build`：
+
+```bash
+wails build -platform windows/amd64
+```
+
+如果无法确定绑定是否变化，直接不加 `-skipbindings` 最稳妥，只会增加少量构建时间。
 
 ## 测试
 
